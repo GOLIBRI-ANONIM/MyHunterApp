@@ -19,7 +19,7 @@ jobs:
           pip3 install --user buildozer cython==0.29.33
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-                  - name: Build APK
+      - name: Build APK
         run: |
           mkdir -p ~/.android && touch ~/.android/repositories.cfg
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
@@ -27,11 +27,8 @@ jobs:
         env:
           ACCEPT_SDK_LICENSE: "True"
 
-
-
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Hasil_APK_BRI
           path: bin/*.apk
-
