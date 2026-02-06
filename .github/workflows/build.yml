@@ -19,19 +19,14 @@ jobs:
           pip3 install --user buildozer cython==0.29.33
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
-            - name: Build APK
+                  - name: Build APK
         run: |
-          # 1. Buat folder untuk lisensi
           mkdir -p ~/.android && touch ~/.android/repositories.cfg
-          
-          # 2. Paksa setujui semua lisensi yang diminta Google
-          # Kita cari di mana sdkmanager berada dan tekan 'y' otomatis
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          
-          # 3. Jalankan Buildozer
           buildozer android debug
         env:
           ACCEPT_SDK_LICENSE: "True"
+
 
 
       - name: Upload APK
