@@ -1,26 +1,25 @@
-name: Build APK BRI Manual
-on: [push]
+name: Build APK BRI
+on:
+  push:
+    branches: [ main ]
+
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Dependencies
         run: |
           sudo apt update
-          sudo apt install -y python3-pip build-essential git python3 python3-dev ffmpeg \
-          libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev \
-          libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev libgstreamer1.0-dev \
-          libgstreamer-plugins-base1.0-dev libunwind-dev openjdk-17-jdk
+          sudo apt install -y python3-pip build-essential git python3-setuptools libffi-dev libssl-dev
 
       - name: Install Buildozer
-        run: |
-          pip3 install --user buildozer cython==0.29.33
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+        run: pip3 install --user buildozer cython==0.29.33
 
       - name: Build APK
         run: |
+          export PATH=$PATH:$HOME/.local/bin
           mkdir -p ~/.android && touch ~/.android/repositories.cfg
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
           buildozer android debug
