@@ -1,7 +1,7 @@
 [app]
-title = MyHunterApp
+title = My Hunter App BRI
 package.name = myhunterapp
-package.domain = org.test
+package.domain = org.goanonim17
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
