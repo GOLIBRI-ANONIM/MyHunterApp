@@ -1,20 +1,22 @@
 [app]
-title = My Hunter App BRI
+title = My Hunter App
 package.name = myhunterapp
-package.domain = org.goanonim17
+package.domain = org.goanonim
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
-requirements = python3,kivy
+requirements = python3,kivy,requests,urllib3,chardet,idna
 
 orientation = portrait
 fullscreen = 0
-android.archs = armeabi-v7a, arm64-v8a
+android.archs = arm64-v8a
 android.allow_backup = True
-android.accept_sdk_license = True
-android.api = 33
-android.ndk = 25b
+android.api = 31
 android.minapi = 21
+android.sdk = 31
+android.ndk = 25b
+android.skip_update = False
+android.accept_sdk_license = True
 
 [buildozer]
 log_level = 2
